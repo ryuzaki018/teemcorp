@@ -1,5 +1,6 @@
 import React from "react";
 import classNames from "classnames";
+import { Link } from "@inertiajs/react";
 
 export default function Logo({ className }) {
     const classnames = classNames(
@@ -7,5 +8,9 @@ export default function Logo({ className }) {
         className
     );
 
-    return <h1 className={classnames}>Teemcorp</h1>;
+    return (
+        <h1 className={classnames}>
+            <Link href="/">Teemcorp</Link>
+        </h1>
+    );
 }

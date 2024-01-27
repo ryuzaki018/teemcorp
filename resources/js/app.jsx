@@ -3,6 +3,8 @@ import { createRoot } from "react-dom/client";
 import { createInertiaApp } from "@inertiajs/react";
 import Main from "./Pages/Layouts/Main";
 import Login from "./Pages/Layouts/Login";
+import { Provider } from "react-redux";
+import store from "./store";
 // import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
 
 createInertiaApp({
@@ -20,6 +22,10 @@ createInertiaApp({
         return page;
     },
     setup({ el, App, props }) {
-        createRoot(el).render(<App {...props} />);
+        createRoot(el).render(
+            <Provider store={store}>
+                <App {...props} />
+            </Provider>
+        );
     },
 });
