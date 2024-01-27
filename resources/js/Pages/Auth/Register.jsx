@@ -1,5 +1,5 @@
 import { Head, Link, router, useForm } from "@inertiajs/react";
-
+import classNames from "classnames";
 export default function Register() {
     const { data, setData, post, processing, errors } = useForm({
         name: "",
@@ -16,6 +16,9 @@ export default function Register() {
     const setInputValues = (fieldValue, fieldName) => {
         setData(fieldName, fieldValue);
     };
+
+    const inputClass =
+        "appearance-none outline-none focus:outline-white block w-full rounded-lg bg-gray-50 p-2.5 text-gray-900 sm:text-sm dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 ";
 
     return (
         <div className="space-y-4 p-6 sm:p-8 md:space-y-6">
@@ -40,15 +43,17 @@ export default function Register() {
                         type="text"
                         name="name"
                         id="name"
-                        className="focus:ring-primary-600 focus:border-primary-600 block w-full
-                                    rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900
-                                    sm:text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-white
-                                    dark:placeholder-gray-400 dark:focus:border-blue-500
-                                    dark:focus:ring-blue-500"
+                        className={classNames(inputClass, {
+                            "border-2 border-red-500": errors.name,
+                        })}
                         placeholder="name"
                         required=""
                     />
-                    {errors.name && <span className="pt-2">{errors.name}</span>}
+                    {errors.name && (
+                        <span className="block rounded p-1 text-sm text-red-200">
+                            {errors.name}
+                        </span>
+                    )}
                 </div>
                 <div>
                     <label
@@ -65,16 +70,16 @@ export default function Register() {
                         type="email"
                         name="email"
                         id="email"
-                        className="focus:ring-primary-600 focus:border-primary-600 block w-full
-                                    rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900
-                                    sm:text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-white
-                                    dark:placeholder-gray-400 dark:focus:border-blue-500
-                                    dark:focus:ring-blue-500"
+                        className={classNames(inputClass, {
+                            "border-2 border-red-500": errors.email,
+                        })}
                         placeholder="name@company.com"
                         required=""
                     />
                     {errors.email && (
-                        <span className="pt-2">{errors.email}</span>
+                        <span className="block rounded p-1 text-sm text-red-200">
+                            {errors.email}
+                        </span>
                     )}
                 </div>
                 <div>
@@ -93,15 +98,15 @@ export default function Register() {
                         name="password"
                         id="password"
                         placeholder="••••••••"
-                        className="focus:ring-primary-600 focus:border-primary-600 block w-full 
-                                    rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 
-                                    sm:text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-white 
-                                    dark:placeholder-gray-400 dark:focus:border-blue-500 
-                                    dark:focus:ring-blue-500"
+                        className={classNames(inputClass, {
+                            "border-2 border-red-500": errors.password,
+                        })}
                         required=""
                     />
                     {errors.password && (
-                        <span className="pt-2">{errors.password}</span>
+                        <span className="block rounded p-1 text-sm text-red-200">
+                            {errors.password}
+                        </span>
                     )}
                 </div>
                 <div>
@@ -123,11 +128,10 @@ export default function Register() {
                         name="password"
                         id="password"
                         placeholder="••••••••"
-                        className="focus:ring-primary-600 focus:border-primary-600 block w-full 
-                                    rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 
-                                    sm:text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-white 
-                                    dark:placeholder-gray-400 dark:focus:border-blue-500 
-                                    dark:focus:ring-blue-500"
+                        className={classNames(inputClass, {
+                            "border-2 border-red-500":
+                                errors.password_confirmation,
+                        })}
                         required=""
                     />
                 </div>

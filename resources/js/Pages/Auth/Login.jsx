@@ -21,8 +21,6 @@ export default function Login() {
         setData(fieldName, fieldValue);
     };
 
-    console.log(errors);
-
     return (
         <div className="space-y-4 p-6 sm:p-8 md:space-y-6">
             <h1
